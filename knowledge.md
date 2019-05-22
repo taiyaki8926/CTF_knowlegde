@@ -79,3 +79,15 @@ def Pohlig-Hellman(g, p, e, h, G):
         x.append(x[k] + (p ** k) * d_k)
     retrun x[-1]
 ```
+
+
+## ppencode
+
+Link : https://masutaro.hatenadiary.org/entry/20080128/1201507016
+(Only Japanese)
+
+```
+perl -e 'hoge'
+```
+
+Note that semicolons `'` is required.
