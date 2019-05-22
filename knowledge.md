@@ -42,11 +42,11 @@ Link : https://en.wikipedia.org/wiki/Pohlig–Hellman_algorithm
 
 Given `g`, `h`, and `G`, and find `x` that satisfies
 
-`g ^ x = h (mod G)`
+`g ^ x ≡ h (mod G)`
 
 This is called the "discrete logarithm problem", and it is difficult to find `x`. However, if the order of `g`, that is, the minimum value of `n` satisfying
 
-`g ^ n = 1 (mod G)`
+`g ^ n ≡ 1 (mod G)`
 
 can be represented by the product of simple prime factors - like `n = p ^ e`, then Pohlig-Hellman's algorithm can be used to find `x` easily.
 
@@ -83,11 +83,77 @@ def Pohlig-Hellman(g, p, e, h, G):
 
 ## ppencode
 
-Link : https://masutaro.hatenadiary.org/entry/20080128/1201507016
-(Only Japanese)
+Link : https://masutaro.hatenadiary.org/entry/20080128/1201507016(Only Japanese)
 
 ```
 perl -e 'hoge'
 ```
 
 Note that semicolons `'` is required.
+
+
+## RSA(private key is given)
+
+(Here, I don't mention basic knowledge about RSA.)
+
+The method to derive primes `p` and `q` when the secret key `d` is released, is described below (Naturally `n` and `e` are given).
+
+Firstly, the two following formulas holds, and find `k`.
+
+・`n = pq`
+
+・`ed ≡ 1 (mod (p-1)(q-1))` , i.e. `ed - 1 = k(p-1)(q-1)`
+
+As a lemma, the following holds; Proof is omitted because it is simple.
+
+> Lemma : When `p` > 3 and `q` > 3, 
+>
+> `1/2 * pq < (p-1)(q-1) < pq`
+> 
+> (End Lemma)
+
+Using this lemma, 
+
+`n/2 < (ed - 1) / k < n`, i.e. `(ed - 1) / n < k < 2(ed - 1) / n`
+
+Nnow that the range of `k` has been narrowed, we use brute-force to find the value of `k` such that `(ed - 1) % k == 0`.
+
+When `k` is known, `p + q` can be obtained, and `p`, `q` can also be obtained from Vieta's formula.
+
+```Python3:find_p_q.py
+from sympy import *
+
+# Given n, e, d
+n = ...
+e = ...
+d = ...
+
+def find_p_q(n, e, d):
+    # check that p is larger than 3
+    if n % 2 == 0:
+        print(2, n // 2)
+    elif n % 3 == 0:
+        print(3, n // 3)
+    else:
+        k_min = (e * d - 1) // n
+        for k in range(k_min, 2 * k_min + 1):
+            if (e * d - 1) % k == 0:
+                # phi = (p-1)(q-1)
+                phi = (e * d - 1) // k
+                # _sum = p + q
+                _sum = n - phi  + 1
+                x = Symbol('x')
+                print(solve(x ** 2 - _sum * x + n))
+```
+
+Among the displayed results, the integer pairs are (`p`, `q`).
+
+## Elliptic Curve
+
+Use [Sage Math Cell](https://sagecell.sagemath.org).
+
+Knowlegde:
+
+・The number of rational points (including infinity) on an elliptic curve is called the order, which is obtained `E.order()`.
+
+(Editing ...)
