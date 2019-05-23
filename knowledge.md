@@ -83,7 +83,7 @@ def Pohlig-Hellman(g, p, e, h, G):
 
 ## ppencode
 
-Link : https://masutaro.hatenadiary.org/entry/20080128/1201507016(Only Japanese)
+Link : https://masutaro.hatenadiary.org/entry/20080128/1201507016 (Only Japanese)
 
 ```
 perl -e 'hoge'
@@ -109,8 +109,6 @@ As a lemma, the following holds; Proof is omitted because it is simple.
 > Lemma : When `p` > 3 and `q` > 3, 
 >
 > `1/2 * pq < (p-1)(q-1) < pq`
-> 
-> (End Lemma)
 
 Using this lemma, 
 
@@ -154,6 +152,30 @@ Use [Sage Math Cell](https://sagecell.sagemath.org).
 
 Knowlegde:
 
-・The number of rational points (including infinity) on an elliptic curve is called the order, which is obtained `E.order()`.
+・`EllipticCurve(Zmod(n), [a, b])` (or `EllipticCurve(IntegerModRing(n), [a, b])`) means `y ^ 2 = x ^ 3 + ax + b (mod n)`.
 
-(Editing ...)
+・In the elliptic curve EC, multiplication `P' = k * P` with respect to the coordinates of a certain point `P` is defined as follows : 
+
+> Repeat the operation `k − 1` times, “move the point of intersection of tangent and EC at point `P` symmetrically with respect to the `x` axis”.
+
+・Conversely, how to find `P` from `P'` is
+
+`P = k_inv * P`
+
+, where
+
+`k_inv = inverse_mod(k, EC.order())`
+
+is.
+
+・What is `EC.order()`? -> The number of rational points (including infinity) on an elliptic curve.
+
+・However, in Sage Math, `EC.order()` can not be obtained if `n` of `EC = EllipticCurve(Zmod(n), [a, b])` is a composite number.
+
+Therefore, by factoring into `n = p * q` and setting
+
+`EC_p = EllipticCurve(Zmod(p), [a, b])`
+
+`EC_q = EllipticCurve(Zmod(q), [a, b])`
+
+, and `EC.order() = EC_p.order() * EC_q.order()` holds.
