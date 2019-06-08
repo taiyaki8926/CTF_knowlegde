@@ -179,3 +179,8 @@ Therefore, by factoring into `n = p * q` and setting
 `EC_q = EllipticCurve(Zmod(q), [a, b])`
 
 , and `EC.order() = EC_p.order() * EC_q.order()` holds.
+
+
+## JSF*ck(Esoteric Programming Language)
+When the code is written using only six characters: `[`, `]`, `(`, `)`, `!`, and `+`, then it can be decoded on [this site](https://enkhee-osiris.github.io/Decoder-JSFuck/).
+
