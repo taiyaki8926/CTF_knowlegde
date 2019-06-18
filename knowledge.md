@@ -180,7 +180,27 @@ Therefore, by factoring into `n = p * q` and setting
 
 , and `EC.order() = EC_p.order() * EC_q.order()` holds.
 
+## Others
 
-## JSF*ck(Esoteric Programming Language)
+### JSF*ck(Esoteric Programming Language)
 When the code is written using only six characters: `[`, `]`, `(`, `)`, `!`, and `+`, then it can be decoded on [this site](https://enkhee-osiris.github.io/Decoder-JSFuck/).
 
+### Mnemonic major system
+See [here](https://en.wikipedia.org/wiki/Mnemonic_major_system)
+
+### Never gonna give you up
+Lyrics : We're no strangers to love, You know the rules 〜
+
+
+# Forensics
+
+## fcrackzip
+If `.png` file and `.zip` file with password are given, 
+
+```
+$ strings hoge.png > word_ls.txt
+$ fcrackzip -v -D -u -p word_ls.txt fuga.zip
+```
+
+## binwalk
+No comments, lol :)
