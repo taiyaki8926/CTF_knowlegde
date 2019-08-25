@@ -237,7 +237,7 @@ int(_str.encode().hex(), 16)
 import codecs
 
 m = 6382179
-codecs.decode(('%x'%m), 'hex_codec')
+codecs.decode(('% x' % m), 'hex_codec')
 
 # -> b'abc'
 ```
