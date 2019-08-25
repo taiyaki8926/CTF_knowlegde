@@ -180,6 +180,16 @@ Therefore, by factoring into `n = p * q` and setting
 
 , and `EC.order() = EC_p.order() * EC_q.order()` holds.
 
+## Rabin Crypto System
+
+Under the situation of `n = p * q`, 
+
+Encrypt : `y = pow(x, 2, n)`
+
+This is not a general form, but here we deal with the case of this expression.
+
+Decoding code is posted in `rabin_decrypt.py`
+
 ## Others
 
 ### JSF*ck(Esoteric Programming Language)
