@@ -228,7 +228,7 @@ If you want to convert bytes -> decimal, remove `.encode()` section of the code 
 _str = 'abc'
 int(_str.encode().hex(), 16)
 
--> 6382179
+# -> 6382179
 ```
 
 ## decimal -> bytes
@@ -239,5 +239,5 @@ import codecs
 m = 6382179
 codecs.decode(('%x'%m), 'hex_codec')
 
-->b'abc'
+# -> b'abc'
 ```
