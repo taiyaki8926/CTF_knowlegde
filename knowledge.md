@@ -190,6 +190,8 @@ This is not a general form, but here we deal with the case of this expression.
 
 Decoding code is posted in `rabin_decrypt.py`
 
+Caution!! : There is no single plaintext. There are four possibilities.
+
 ## Others
 
 ### JSF*ck(Esoteric Programming Language)
