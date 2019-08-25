@@ -33,7 +33,7 @@ def decrypt_Paillier(n, g, c, p, q):
     import codecs
     _lambda = (p-1) * (q-1) // math.gcd(p-1, q-1)
     m = L(pow(c, _lambda, n**2)) * egcd(L(pow(g, _lambda, n**2)), n) % n
-    return codecs.decode(('%x'%m), 'hex_codec')
+    return codecs.decode(('%x' % m), 'hex_codec')
 ```
 
 ## Pohlig-Hellman Algorithm
@@ -237,7 +237,7 @@ int(_str.encode().hex(), 16)
 import codecs
 
 m = 6382179
-codecs.decode(('% x' % m), 'hex_codec')
+codecs.decode(('%x' % m), 'hex_codec')
 
 # -> b'abc'
 ```
