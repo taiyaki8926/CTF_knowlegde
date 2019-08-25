@@ -188,7 +188,7 @@ Encrypt : `y = pow(x, 2, n)`
 
 This is not a general form, but here we deal with the case of this expression.
 
-Decoding code is posted in `rabin_decrypt.py`
+Decoding code is posted in [rabin_decrypt.py](https://github.com/taiyaki8926/CTF_knowlegde/blob/master/Rabin_decode.py)
 
 Caution!! : There is no single plaintext. There are four possibilities.
 
