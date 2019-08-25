@@ -216,3 +216,28 @@ $ fcrackzip -v -D -u -p word_ls.txt fuga.zip
 
 ## binwalk
 No comments, lol :)
+
+
+# Miscellaneous
+
+## str(not bytes) -> decimal
+
+If you want to convert bytes -> decimal, remove `.encode()` section of the code below.
+
+```
+_str = 'abc'
+int(_str.encode().hex(), 16)
+
+-> 6382179
+```
+
+## decimal -> bytes
+
+```
+import codecs
+
+m = 6382179
+codecs.decode(('%x'%m), 'hex_codec')
+
+->b'abc'
+```
