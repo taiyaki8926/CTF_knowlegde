@@ -224,7 +224,7 @@ No comments, lol :)
 
 If you want to convert bytes -> decimal, remove `.encode()` section of the code below.
 
-```
+```Python3:str2decimal.py
 _str = 'abc'
 int(_str.encode().hex(), 16)
 
@@ -233,7 +233,7 @@ int(_str.encode().hex(), 16)
 
 ## decimal -> bytes
 
-```
+```Python3:decimal2bytes.py
 import codecs
 
 m = 6382179
