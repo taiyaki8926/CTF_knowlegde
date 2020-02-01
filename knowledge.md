@@ -96,9 +96,9 @@ Note that semicolons `'` is required.
 
 (Here, I don't mention basic knowledge about RSA.)
 
-The method to derive primes `p` and `q` when the secret key `d` is released, is described below (Naturally `n` and `e` are given).
+The method to derive primes `p` and `q` when the secret key `d` is given, is described below (Naturally `n` and `e` are given).
 
-Firstly, the two following formulas holds, and find `k`.
+Firstly, the two following formulas holds (`k` is integer).
 
 ・`n = pq`
 
