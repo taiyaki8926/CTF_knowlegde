@@ -98,11 +98,11 @@ Note that semicolons `'` is required.
 
 The method to derive primes `p` and `q` when the secret key `d` is given, is described below (Naturally `n` and `e` are given).
 
-Firstly, the two following formulas holds (`k` is integer).
+Firstly, the two following formulas hold (`k` is integer).
 
 ・`n = pq`
 
-・`ed ≡ 1 (mod (p-1)(q-1))` , i.e. `ed - 1 = k(p-1)(q-1)`
+・`ed ≡ 1 mod (p-1)(q-1)` , i.e. `ed - 1 = k(p-1)(q-1)`
 
 As a lemma, the following holds; Proof is omitted because it is simple.
 
@@ -114,7 +114,7 @@ Using this lemma,
 
 `n/2 < (ed - 1) / k < n`, i.e. `(ed - 1) / n < k < 2(ed - 1) / n`
 
-Nnow that the range of `k` has been narrowed, we use brute-force to find the value of `k` such that `(ed - 1) % k == 0`.
+Now that the range of `k` has been narrowed, we use brute-force to find the value of `k` such that `(ed - 1) % k == 0`.
 
 When `k` is known, `p + q` can be obtained, and `p`, `q` can also be obtained from Vieta's formula.
 
@@ -127,11 +127,11 @@ e = ...
 d = ...
 
 def find_p_q(n, e, d):
-    # check that p is larger than 3
+    # check that p is larger than 3 or not
     if n % 2 == 0:
-        print(2, n // 2)
+        print("p = 2, q = {}".format(n // 2))
     elif n % 3 == 0:
-        print(3, n // 3)
+        print("p = 3, q = {}".format(n // 3))
     else:
         k_min = (e * d - 1) // n
         for k in range(k_min, 2 * k_min + 1):
@@ -141,7 +141,11 @@ def find_p_q(n, e, d):
                 # _sum = p + q
                 _sum = n - phi  + 1
                 x = Symbol('x')
-                print(solve(x ** 2 - _sum * x + n))
+                p, q = solve(x ** 2 - _sum * x + n)
+                if p.is_integer:
+                    print('p is {}\n'.format(p))
+                    print('q is {}'.format(q))
+    return 0
 ```
 
 Among the displayed results, the integer pairs are (`p`, `q`).
