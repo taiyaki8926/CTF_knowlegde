@@ -256,7 +256,9 @@ $ tar -xvf hoge.tar
 ```
 
 -x : eXtract
+
 -v : Verbose (view archive results)
+
 -f : File
 
 ## Zip archive data, at least v2.0 to extract
@@ -280,4 +282,11 @@ gzip -kd hoge.gz
 ```
 
 -k : Keep
+
 -d : Decompress
+
+## XZ compressed data
+
+```
+$ xz -kd hoge.xz 
+```
