@@ -245,3 +245,39 @@ codecs.decode(('%x' % m), 'hex_codec')
 
 # -> b'abc'
 ```
+
+
+# file decompression
+
+## POSIX tar archive (GNU)
+
+```
+$ tar -xvf hoge.tar
+```
+
+-x : eXtract
+-v : Verbose (view archive results)
+-f : File
+
+## Zip archive data, at least v2.0 to extract
+
+```
+$ unzip hoge.zip
+```
+
+## bzip2 compressed data, block size = …
+
+```
+bunzip2 -k hoge.bz2
+```
+
+-k : Keep
+
+## gzip compressed data, …
+
+```
+gzip -kd hoge.gz
+```
+
+-k : Keep
+-d : Decompress
