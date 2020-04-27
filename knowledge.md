@@ -290,3 +290,17 @@ gzip -kd hoge.gz
 ```
 $ xz -kd hoge.xz 
 ```
+
+## RAR archive data, v5
+
+```
+$ rar e hoge.rar
+```
+
+If RAR file has a password lock, download `rockyou.txt` and execute
+
+```
+$ rar2john hoge.rar > rar.hash
+$ john --wordlist (Appropriate Directory)/rockyou.txt --format=rar5 rar.hash
+$ john --show rar.hash
+```
