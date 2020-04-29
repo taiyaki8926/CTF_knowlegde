@@ -196,6 +196,22 @@ Decoding code is posted in [rabin_decrypt.py](https://github.com/taiyaki8926/CTF
 
 Caution!! : There is no single plaintext. There are four possibilities.
 
+## Legendre symbol and Euler's criterion
+
+Euler's criterion : 
+
+ * `pow(a, (p-1)//2, p) == 1 ` <=> There is an integer `x` such that `a ≡ x ^ 2 (mod p)`
+
+ * `pow(a, (p-1)//2, p) == -1 ( or p-1) ` <=> There is no such integer
+
+ * `pow(a, (p-1)//2, p) == 0 ` <=> `a ≡ 0 (mod p)`
+
+If `p ≡ 3 (mod 4)` and `pow(a, (p-1)//2, p) == 1 `, 
+
+`x = ± pow(a, (p+1)//4, p)`
+
+
+
 ## Others
 
 ### JSF*ck(Esoteric Programming Language)
