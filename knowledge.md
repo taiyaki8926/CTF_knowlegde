@@ -5,36 +5,8 @@ Link : https://en.wikipedia.org/wiki/Paillier_cryptosystem
 
 (Unlike RSA encryption,) when `n`, `g` and `c` are given, it should be inferred that the Paillier encryption method is used.
 
-```Python3:Paillier.py
+See [Paillier_decrypt.py](https://github.com/taiyaki8926/CTF_knowlegde/blob/master/Paillier_decrypt.py)
 
-# given n, g, c
-n = ...
-g = ...
-c = ...
-
-# to factorize n, use "factordb.com"
-p = ...
-q = ...
-
-def L(u):
-    return (u-1) // n
-
-# extended Euclidean algorithm
-def egcd(e, n):
-    x, y, u, v = 0, 1, 1, 0
-    while e != 0:
-        q, r = n // e, n % e
-        m, n = x - u * q, y - v * q
-        n, e, x, y, u, v = e, r, u, v, m, n
-    return x
-    
-def decrypt_Paillier(n, g, c, p, q):
-    import math
-    import codecs
-    _lambda = (p-1) * (q-1) // math.gcd(p-1, q-1)
-    m = L(pow(c, _lambda, n**2)) * egcd(L(pow(g, _lambda, n**2)), n) % n
-    return codecs.decode(('%x' % m), 'hex_codec')
-```
 
 ## Pohlig-Hellman Algorithm
 
@@ -192,7 +164,7 @@ Encrypt : `y = pow(x, 2, n)`
 
 This is not a general form, but here we deal with the case of this expression.
 
-Decoding code is posted in [rabin_decrypt.py](https://github.com/taiyaki8926/CTF_knowlegde/blob/master/Rabin_decode.py)
+Decoding code is posted in [rabin_decrypt.py](https://github.com/taiyaki8926/CTF_knowlegde/blob/master/Rabin_decrypt.py)
 
 Caution!! : There is no single plaintext. There are four possibilities.
 
