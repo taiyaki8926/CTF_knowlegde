@@ -210,7 +210,68 @@ If `p ≡ 3 (mod 4)` and `pow(a, (p-1)//2, p) == 1 `,
 
 `x = ± pow(a, (p+1)//4, p)`
 
+## OpenSSL
 
+### private or public key is given
+
+```Terminal:
+$ openssl rsa -in hoge.pem -text -noout
+
+or
+
+$ openssl rsa -in hoge.der -inform der -text -noout
+
+->
+
+modulus: ~
+publicExponent: ~
+privateExponent: ~
+prime1: ~
+prime2: ~
+exponent1: ~
+exponent2: ~
+coefficient: ~
+```
+
+* modulus : `n`
+
+* publicExponent : `e`
+
+* privateExponent : `d`
+
+* prime1, prime2 : `p, q`
+
+* exponent1, exponent2, coefficient : (not use -> see also the below link)
+
+Link(Only Japanese) : 
+
+https://qiita.com/kunichiko/items/12cbccaadcbf41c72735
+
+https://qiita.com/ch7821/items/4b315902c0c5f84083ab
+
+If you wanna remove the colon, (in other words, if you wanna get a hexdecimal value)
+
+```Terminal:
+$ openssl asn1parse -in hoge.pem 
+
+or
+ 
+$ openssl asn1parse -in hoge.der -inform der
+```
+
+### Certificate Signing Request(CSR) is given
+
+(Only know the public key, of course.)
+
+```Terminal:
+$ openssl x509 -in hoge.pem -text -noout
+
+or 
+
+$ openssl x509 -in hoge.der -inform der -text -noout
+```
+
+I don't know how to get rid of colon, so let me know please :(
 
 ## Others
 
@@ -263,7 +324,7 @@ codecs.decode(('%x' % m), 'hex_codec')
 ```
 
 
-# file decompression
+# File Decompression
 
 ## POSIX tar archive (GNU)
 
