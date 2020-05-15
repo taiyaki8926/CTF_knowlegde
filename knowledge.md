@@ -198,6 +198,11 @@ x = square_root_mod_prime(a)
 
 If `p ≡ 3 (mod 4)` and `sympy.n_order(a, p) = (p-1) // 2`, then `a` is quadratic residue, and `-a` is quadratic non-residue
 
+## Trivia
+
+When `N=pq`, `p^k mod N` is a multiple of `p`.
+
+So it is possible to narrow down `p` with the GCD(`p^k mod N`, `N`)
 
 ## OpenSSL
 
