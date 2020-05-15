@@ -182,6 +182,21 @@ If `p ≡ 3 (mod 4)` and `pow(a, (p-1)//2, p) == 1 `,
 
 `x = ± pow(a, (p+1)//4, p)`
 
+Else if `p ≡ 3 (mod 4)` , `pow(a, (p-1)//2, p) == 1 `, and `p` is prime, use [Tonelli–Shanks algorithm](https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm)
+
+```Python3:
+# using Sage
+
+from sage.rings.finite_rings.integer_mod import * 
+
+p = Integers(7)
+a = IntegerMod(p, 4)
+
+x = square_root_mod_prime(a)
+# -> return 2
+```
+
+
 ## OpenSSL
 
 ### private or public key is given
