@@ -1,7 +1,8 @@
 # Crypto
 
 ## mod inverse
-```Python3:mod_inv
+
+```Python3:mod_inv.py
 from Crypto.Util.number import inverse
 
 d = inverse(e, phi)
