@@ -198,6 +198,9 @@ x = square_root_mod_prime(a)
 # -> return 2
 ```
 
+Perhaps it is possible to use this algorithm even if `p` is not a prime number.
+
+
 ### Others
 If `p ≡ 3 (mod 4)` and `sympy.n_order(a, p) = (p-1) // 2`, then `a` is quadratic residue, and `-a` is quadratic non-residue
 
