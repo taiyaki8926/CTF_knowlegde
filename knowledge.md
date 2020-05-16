@@ -1,5 +1,12 @@
 # Crypto
 
+## mod inverse
+```Python3:mod_inv
+from Crypto.Util.number import inverse
+
+d = inverse(e, phi)
+```
+
 ## Paillier Crypto System
 Link : https://en.wikipedia.org/wiki/Paillier_cryptosystem
 
