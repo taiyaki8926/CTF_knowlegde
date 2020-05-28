@@ -138,6 +138,8 @@ Knowlegde:
 
 ・`EllipticCurve(Zmod(n), [a, b])` (or `EllipticCurve(IntegerModRing(n), [a, b])`) means `y ^ 2 = x ^ 3 + ax + b (mod n)`.
 
+Point `P(x, y)` is defined as `P = E(x, y)` in Sage.
+
 ・In the elliptic curve EC, multiplication `P' = k * P` with respect to the coordinates of a certain point `P` is defined as follows : 
 
 > Repeat the operation `k − 1` times, “move the point of intersection of tangent and EC at point `P` symmetrically with respect to the `x` axis”.
