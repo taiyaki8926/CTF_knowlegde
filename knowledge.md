@@ -8,6 +8,13 @@ from Crypto.Util.number import inverse
 d = inverse(e, phi)
 ```
 
+In Sage, the following can also be used.
+
+```Python3:mod_inv.py
+d = pow(e, -1, phi)
+```
+
+
 ## Paillier Crypto System
 Link : https://en.wikipedia.org/wiki/Paillier_cryptosystem
 
@@ -140,6 +147,8 @@ Knowlegde:
 
 Point `P(x, y)` is defined as `P = E(x, y)` in Sage.
 
+How to check whether `P(x, y)` is on the elliptic curve `E` or not is: `E.is_on_curve(x, y)`
+
 ・In the elliptic curve EC, multiplication `P' = k * P` with respect to the coordinates of a certain point `P` is defined as follows : 
 
 > Repeat the operation `k − 1` times, “move the point of intersection of tangent and EC at point `P` symmetrically with respect to the `x` axis”.
@@ -156,7 +165,7 @@ is.
 
 ・What is `EC.order()`? -> The number of rational points (including infinity) on an elliptic curve.
 
-・However, in Sage Math, `EC.order()` can not be obtained if `n` of `EC = EllipticCurve(Zmod(n), [a, b])` is a composite number.
+・However, in Sage Math, `EC.order()` cannot be obtained if `n` of `EC = EllipticCurve(Zmod(n), [a, b])` is a composite number.
 
 Therefore, by factoring into `n = p * q` and setting
 
@@ -208,8 +217,16 @@ x = square_root_mod_prime(a)
 # -> return 2
 ```
 
+or
+```Python3:Sage.py
+# using Sage
+
+mod(4, 7).sqrt()
+```
+
 Perhaps it is possible to use this algorithm even if `p` is not a prime number.
 
+In python, see [here](https://qiita.com/taiyaki8926/items/6720a1c19e9c9afbfd12) (Only Japanese)
 
 ### Others
 If `p ≡ 3 (mod 4)` and `sympy.n_order(a, p) = (p-1) // 2`, then `a` is quadratic residue, and `-a` is quadratic non-residue
