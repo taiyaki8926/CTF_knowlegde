@@ -140,41 +140,52 @@ Among the displayed results, the integer pairs are (`p`, `q`).
 
 ## Elliptic Curve
 
-Use [Sage Math Cell](https://sagecell.sagemath.org).
+We need to install Sage, or to use [Sage Math Cell](https://sagecell.sagemath.org).
 
 Knowlegde:
 
-・`EllipticCurve(Zmod(n), [a, b])` (or `EllipticCurve(IntegerModRing(n), [a, b])`) means `y ^ 2 = x ^ 3 + ax + b (mod n)`.
+・ `E = EllipticCurve(Zmod(n), [a, b])` (or `EllipticCurve(IntegerModRing(n), [a, b])`) : `E: y^2 = x^3 + ax + b (mod n)`
 
-Point `P(x, y)` is defined as `P = E(x, y)` in Sage.
+・ If `p` is prime, it can be written as `EllipticCurve(GF(p), [a, b])`
 
-How to check whether `P(x, y)` is on the elliptic curve `E` or not is: `E.is_on_curve(x, y)`
+・ `EllipticCurve(GF(p), [a, b, c, d, e])` : `y^2 + a*x*y + c*y = x^3 + b*x^2 + d*x + e (mod p)`
+
+・ `P = E(x, y)` : `P(x, y)` on `E`
+
+・ `E.is_on_curve(x, y)` : How to check whether `P(x, y)` is on the elliptic curve `E` or not
 
 ・In the elliptic curve EC, multiplication `P' = k * P` with respect to the coordinates of a certain point `P` is defined as follows : 
 
 > Repeat the operation `k − 1` times, “move the point of intersection of tangent and EC at point `P` symmetrically with respect to the `x` axis”.
 
-・Conversely, how to find `P` from `P'` is
+・ Conversely, how to find `P` from `P'` is
 
-`P = k_inv * P`
+`P = k_inv * P'`, where `k_inv = inverse_mod(k, EC.order())` is.
 
-, where
+・ What is `EC.order()`? -> The number of rational points (including infinity) on an elliptic curve.
 
-`k_inv = inverse_mod(k, EC.order())`
-
-is.
-
-・What is `EC.order()`? -> The number of rational points (including infinity) on an elliptic curve.
-
-・However, in Sage Math, `EC.order()` cannot be obtained if `n` of `EC = EllipticCurve(Zmod(n), [a, b])` is a composite number.
+・ However, in Sage Math, `EC.order()` cannot be obtained if `n` of `EC = EllipticCurve(Zmod(n), [a, b])` is a composite number.
 
 Therefore, by factoring into `n = p * q` and setting
 
-`EC_p = EllipticCurve(Zmod(p), [a, b])`
+`EC_p = EllipticCurve(GF(p), [a, b])`
 
-`EC_q = EllipticCurve(Zmod(q), [a, b])`
+`EC_q = EllipticCurve(GF(q), [a, b])`
 
 , and `EC.order() = EC_p.order() * EC_q.order()` holds.
+
+・ Parameters:
+
+`p` : prime
+
+`a`, `b` : coefficient
+
+`G` (or `x` and `y`) : base point 
+
+`n` or `q` : order of point `G`, not #E(GF(p))
+
+`h` : define as #E(GF(p)) / q
+
 
 ## Rabin Crypto System
 
