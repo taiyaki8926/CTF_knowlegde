@@ -2,18 +2,19 @@
 
 ## mod inverse
 
+This shows how to calculate `d` such as `e * d ≡ 1 (mod phi)`
+
 ```Python3:mod_inv.py
 from Crypto.Util.number import inverse
 
 d = inverse(e, phi)
 ```
 
-In Sage, the following can also be used.
+In Sage or Python>=3.8, the following can also be used.
 
 ```Python3:mod_inv.py
 d = pow(e, -1, phi)
 ```
-
 
 ## Paillier Crypto System
 Link : https://en.wikipedia.org/wiki/Paillier_cryptosystem
@@ -241,6 +242,18 @@ So it is possible to narrow down `p` with the GCD(`p^k mod N`, `N`)
 
 ### private or public key is given
 
+When public key is given:
+
+```Terminal:
+$ openssl rsa -pubin -in hoge.pem -text -noout
+
+or
+
+$ openssl rsa -pubin -in hoge.der -inform der -text -noout
+```
+
+When private key is given:
+
 ```Terminal:
 $ openssl rsa -in hoge.pem -text -noout
 
@@ -275,6 +288,8 @@ Link(Only Japanese) :
 https://qiita.com/kunichiko/items/12cbccaadcbf41c72735
 
 https://qiita.com/ch7821/items/4b315902c0c5f84083ab
+
+
 
 If you wanna remove the colon, (in other words, if you wanna get a hexdecimal value)
 
